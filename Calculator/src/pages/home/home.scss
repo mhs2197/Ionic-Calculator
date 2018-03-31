@@ -1,0 +1,22 @@
+page-home {
+ button {
+    margin: 0 !important;
+    height: 14vh !important;
+    border-radius: 0 !important;
+ }
+ ion-content{
+     div.scroll-content{
+         padding: 0 !important;
+     }
+ }
+ .display-result{
+    border-bottom:1px solid grey;
+    font-size: 5rem;
+    height: 20vh;
+    padding-top: 3rem;
+    color: #000 !important;
+ }
+ .display-result .text-input[disabled] {
+    opacity: 0.8;
+}
+}
