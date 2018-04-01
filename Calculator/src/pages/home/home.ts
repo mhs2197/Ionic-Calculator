@@ -48,10 +48,8 @@ export class HomePage {
                 else if(this.temp>0)
                   {
                      
-                      this.temp = 0;
-                      
-                      
-                        this.value += c;
+                    this.temp = 0;
+                    this.value += c;
                       
                   }
 
@@ -65,6 +63,13 @@ export class HomePage {
                   {
                     this.value = this.value.slice(0, this.value.length-1) + c;
                   }
+                }
+                else if( this.value.slice(-1)==".")
+                {
+                  if(c!='.')
+                      {
+                        this.value += c;
+                      }
                 }
                 else if( this.value.slice(-1)==".")
                 {
@@ -106,12 +111,16 @@ export class HomePage {
               }
               getResult()
               {
-                if(this.value.slice(-1)=="+" || this.value.slice(-1)=="-" || this.value.slice(-1)=="*" || this.value.slice(-1)=="/" || this.value.slice(-1)==".")
+                if (this.value =='')
+                {
+                  
+                }
+                else if(this.value.slice(-1)=="+" || this.value.slice(-1)=="-" || this.value.slice(-1)=="*" || this.value.slice(-1)=="/" || this.value.slice(-1)==".")
                 {
                   
                 }
                 else{
-                  this.value =  eval(this.value).toString();
+                  this.value =  eval(this.value);
                   this.temp = parseFloat(this.value);
                 }
               }
@@ -120,7 +129,8 @@ export class HomePage {
                 this.value = this.value.slice(0 , this.value.length-1);
               }
               getPercentage(){
-                if(this.value=='')
+                if(this.value=='' || this.value.slice(0) == '/' || this.value.slice(0) == '*' 
+                || this.value.slice(0) == '+' || this.value.slice(0) == '-' || this.value.slice(0) == '.')
                 {
                   this.value=''
                 }
