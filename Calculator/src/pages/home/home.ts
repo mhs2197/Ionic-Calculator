@@ -35,27 +35,85 @@ export class HomePage {
               }
               getOperator(c)
               {
-                if(this.temp>0)
+                if( this.value=='')
+                {
+                  if(c=='+' || c=='*' || c=='/')
+                      {
+                        this.value='';
+                      }
+                      else{
+                        this.value += c;
+                      }
+                }
+                else if(this.temp>0)
                   {
-                      this.value += c;
+                     
                       this.temp = 0;
+                      
+                      
+                        this.value += c;
+                      
                   }
 
-                else if(this.value.slice(-1)=="+" || this.value.slice(-1)=="-" || this.value.slice(-1)=="*" || this.value.slice(-1)=="/" || this.value.slice(-1)==".")
+                else if(this.value.slice(-1)=="+" || this.value.slice(-1)=="-" || this.value.slice(-1)=="*" || this.value.slice(-1)=="/")
                 {
-                  this.value = this.value.slice(0, this.value.length-1) + c;
+                  if(c=='.')
+                  {
+                    this.value += c;
+                  }
+                  else
+                  {
+                    this.value = this.value.slice(0, this.value.length-1) + c;
+                  }
                 }
+                else if( this.value.slice(-1)==".")
+                {
+                  if(c!='.')
+                      {
+                        this.value += c;
+                      }
+                }
+                // else if (this.value.indexOf('.') > this.value.indexOf('+') || this.value.indexOf('.') > this.value.indexOf('-')
+                //           || this.value.indexOf('.') > this.value.indexOf('*') || this.value.indexOf('.') > this.value.indexOf('/'))
+                // {
+                  
+                //   if (this.value.indexOf('+') > this.value.indexOf('.') || this.value.indexOf('-') > this.value.indexOf('.')
+                //           || this.value.indexOf('*') > this.value.indexOf('.') || this.value.indexOf('/') > this.value.indexOf('.'))
+                //   {
+                //     if(c=='.')
+                //     {
+                //       this.value += c;
+                //     } 
+                //   }
+                //   else if(c!='.')
+                //   {
+                //     this.value += c;
+                //   }
+                // }
+                // else if (this.value.indexOf('+') > this.value.indexOf('.') || this.value.indexOf('-') > this.value.indexOf('.')
+                //           || this.value.indexOf('*') > this.value.indexOf('.') || this.value.indexOf('/') > this.value.indexOf('.'))
+                // {
+                //   if(c=='.')
+                //   {
+                //     this.value += c;
+                //   } 
+                // }
+                
                 else
                 {
                   this.value += c;
                 }
-                
-
               }
               getResult()
               {
-                this.value =  eval(this.value).toString();
-                this.temp = parseFloat(this.value);
+                if(this.value.slice(-1)=="+" || this.value.slice(-1)=="-" || this.value.slice(-1)=="*" || this.value.slice(-1)=="/" || this.value.slice(-1)==".")
+                {
+                  
+                }
+                else{
+                  this.value =  eval(this.value).toString();
+                  this.temp = parseFloat(this.value);
+                }
               }
               deleteValue()
               {
